@@ -11,7 +11,7 @@
   --color-primary: #C94B4C;
   --color-primary: #C94B4C;
   --color-primary-dark: #CE2C2E;
-  --color-text: #1e293b;
+  --color-text: #000;
   --color-text-muted: #64748b;
   --color-bg: #ffffff;
   --color-bg-light: #f8fafc;
@@ -42,7 +42,7 @@ html {
 }
 
 body {
-  font-family: var(--font-family);
+  font-family: var(--font-family-h);
   font-size: var(--font-size-base);
   color: var(--color-text);
   background-color: var(--color-bg);
@@ -110,12 +110,14 @@ h1, h2, h3, h4, h5, h6 {
 .nav-links a {
   font-size: var(--font-size-base);
   font-weight: 500;
-  color: var(--color-text-muted);
+  color: var(--color-text);
   transition: color var(--transition);
 }
 
-.nav-links a:hover {
-  color: var(--color-primary);
+.nav-links a:hover,
+.nav-links a.selected {
+  border-bottom: 4px solid var(--color-primary);
+  padding-bottom: 4px;
 }
 
 /* =============================================
@@ -166,6 +168,9 @@ h1, h2, h3, h4, h5, h6 {
   color: #000;
   margin-bottom: 1rem;
   font-weight: 300;
+}
+.hero-content .btn {
+  margin-top: 1.5rem;
 }
 
 /* =============================================
