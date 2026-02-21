@@ -132,8 +132,14 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-hero-text);
   padding: 6rem 0;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
-
+.hero-content,
+.hero-img {
+    width: 50%;
+}
 .hero-title {
   font-size: var(--font-size-4xl);
   font-weight: 700;
