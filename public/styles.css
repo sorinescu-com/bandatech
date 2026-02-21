@@ -154,13 +154,11 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.05;
   letter-spacing: -0.1em;
   margin-bottom: 1.25rem;
-  /* max-width: max(calc((var(--page-width) / 2) + 15vw + 40px), calc(600px + 15vw + 40px)); */
-  /* position: relative; */
-  /* margin-right: calc(15vw + 180px); */
-  /* margin-left: auto; */
-  background: red;
+  background: #fff;
   padding: 40px;
-  width: max(calc((var(--page-width) / 2) + 15vw + 40px), calc(600px + 15vw + 40px));
+  left: -40px;
+  width: calc((var(--page-width) / 2) + 15vw + 40px);
+  position: relative;
 }
 
 .hero-subtitle {
