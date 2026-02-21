@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bandatech</title>
+
+<style>
+:root {
+  --primary: #c94444;
+  --dark: #111;
+  --light: #f5f5f5;
+  --text: #1a1a1a;
+  --muted: #777;
+  --green: #6f8f55;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  line-height: 1.5;
+  background: white;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* NAV */
+header {
+  width: 100%;
+  padding: 24px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+  font-size: 14px;
+}
+
+.logo {
+  font-weight: bold;
+  letter-spacing: 2px;
+  border: 2px solid var(--primary);
+  padding: 6px 14px;
+}
+
+/* HERO */
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  padding: 60px;
+  gap: 40px;
+}
+
+.hero-text {
+  background: white;
+  padding: 50px;
+  max-width: 520px;
+}
+
+.hero-text h1 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.hero-text p {
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.hero-image {
+  height: 480px;
+  background: url('https://images.unsplash.com/photo-1581093458791-9d09b8d2a8d2?q=80&w=1974') center/cover no-repeat;
+}
+
+/* SLIDER SECTION */
+.slider {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 500px;
+}
+
+.slider-left {
+  background: #000;
+}
+
+.slider-right {
+  position: relative;
+  background: url('https://images.unsplash.com/photo-1605146769289-440113cc3d00?q=80&w=2070') center/cover no-repeat;
+}
+
+.slider-card {
+  position: absolute;
+  bottom: 60px;
+  left: 60px;
+  background: rgba(255,255,255,0.95);
+  padding: 40px;
+  max-width: 420px;
+}
+
+.slider-card h2 {
+  color: var(--primary);
+  margin-bottom: 14px;
+}
+
+.slider-card p {
+  color: #555;
+  font-size: 14px;
+}
+
+/* MISSION */
+.mission {
+  text-align: center;
+  padding: 80px 20px 40px;
+}
+
+.mission h3 {
+  font-size: 26px;
+  max-width: 720px;
+  margin: 0 auto 50px;
+}
+
+/* PARTNERS */
+.partners {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+  padding: 0 60px 80px;
+}
+
+.partner {
+  border: 1px solid #eee;
+  padding: 30px;
+  text-align: center;
+  font-weight: bold;
+  color: #999;
+  background: #fafafa;
+}
+
+/* SUSTAINABLE SECTION */
+.sustainable {
+  position: relative;
+  min-height: 480px;
+  background: url('https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1974') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sustainable-card {
+  background: rgba(111, 143, 85, 0.9);
+  padding: 60px;
+  color: white;
+  max-width: 700px;
+  text-align: center;
+  border: 2px solid rgba(255,255,255,0.4);
+}
+
+.sustainable-card h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.sustainable-card p {
+  font-size: 14px;
+  opacity: 0.9;
+  margin-bottom: 30px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  font-size: 14px;
+}
+
+/* PROJECTS */
+.projects {
+  padding: 80px 60px;
+}
+
+.projects-header {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  margin-bottom: 40px;
+}
+
+.projects-header h2 {
+  font-size: 32px;
+  color: var(--primary);
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.project-card img {
+  height: 180px;
+  object-fit: cover;
+}
+
+.project-card h4 {
+  margin: 15px 0 8px;
+  font-size: 18px;
+}
+
+.project-card p {
+  font-size: 14px;
+  color: #666;
+}
+
+/* FOOTER */
+footer {
+  background: var(--primary);
+  color: white;
+  padding: 80px 60px 40px;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 40px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.footer-bottom {
+  font-size: 12px;
+  opacity: 0.8;
+  margin-top: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">BANDATECH</div>
+  <nav>
+    <ul>
+      <li>Acasă</li>
+      <li>Cine suntem?</li>
+      <li>Soluții</li>
+      <li>Proiecte</li>
+      <li>Contact</li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero">
+  <article class="hero-text">
+    <h1>Every great partnership starts with trust — and at Bandatech, that trust has shaped who we are.</h1>
+    <p>
+      From our earliest projects, we’ve believed that progress comes from responsibility, hard work, and innovation.
+      We grow alongside our clients, creating solutions that make buildings more efficient, safer, and more comfortable.
+    </p>
+  </article>
+  <figure class="hero-image"></figure>
+</section>
+
+<section class="slider">
+  <div class="slider-left"></div>
+  <div class="slider-right">
+    <article class="slider-card">
+      <h2>Izolații HVAC</h2>
+      <p>
+        Soluții profesionale pentru izolarea instalațiilor de climatizare și ventilație.
+        Produsele noastre reduc pierderile de energie și contribuie la eficiența sistemelor HVAC.
+      </p>
+    </article>
+  </div>
+</section>
+
+<section class="mission">
+  <h3>
+    Misiunea noastră este să oferim soluții esențiale pentru construcția durabilă a unui viitor confortabil și sigur.
+  </h3>
+</section>
+
+<section class="partners">
+  <div class="partner">COOLTECH</div>
+  <div class="partner">ROCKWOOL</div>
+  <div class="partner">KNAUF</div>
+  <div class="partner">COROPLAST</div>
+  <div class="partner">ARMACELL</div>
+</section>
+
+<section class="sustainable">
+  <article class="sustainable-card">
+    <h2>Viitor Sustenabil</h2>
+    <p>
+      Misiunea noastră depășește materialele și tehnologia.
+      Este despre construirea unui viitor sustenabil — unul care echilibrează performanța cu confortul și fiabilitatea.
+    </p>
+    <div class="buttons">
+      <span>Descarcă broșura</span>
+      <span>Certificat verde</span>
+      <span>Formular contact</span>
+    </div>
+  </article>
+</section>
+
+<section class="projects">
+  <div class="projects-header">
+    <h2>Proiecte</h2>
+    <p>
+      Every great partnership starts with trust — and at Bandatech, that trust has shaped who we are.
+    </p>
+  </div>
+
+  <div class="project-grid">
+    <article class="project-card">
+      <img src="https://images.unsplash.com/photo-1569154941061-e231b4725ef1?q=80&w=1974" alt="Airport">
+      <h4>Aeroportul Internațional Henri Coandă București</h4>
+      <p>From our earliest projects, we’ve believed that progress comes from responsibility and innovation.</p>
+    </article>
+
+    <article class="project-card">
+      <img src="https://images.unsplash.com/photo-1505843513577-22bb7d21e455?q=80&w=1974" alt="Mall">
+      <h4>AFI Cotroceni Centru Comercial</h4>
+      <p>Creating insulation solutions that make buildings more efficient and comfortable.</p>
+    </article>
+
+    <article class="project-card">
+      <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1974" alt="Office">
+      <h4>Gran Via Lake</h4>
+      <p>Our mission goes beyond materials and technology — it’s about balance.</p>
+    </article>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-top">
+    <div class="logo">BANDATECH</div>
+    <nav class="footer-nav">
+      <span>Despre Noi</span>
+      <span>Soluții</span>
+      <span>Proiecte</span>
+      <span>Articole</span>
+      <span>Contact</span>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    © 2025 Bandatech. All Rights Reserved
+  </div>
+</footer>
+
+</body>
+</html>
