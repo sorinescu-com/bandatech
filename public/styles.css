@@ -198,6 +198,94 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* =============================================
+   Solutions Slider
+   ============================================= */
+.slider {
+  padding: 5rem 0;
+  background: var(--color-bg-light);
+}
+
+.slider-shell {
+  position: relative;
+}
+
+.slider-track {
+  position: relative;
+  min-height: 420px;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  background: var(--color-bg);
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease;
+}
+
+.slide.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.slide:nth-child(1) { background: linear-gradient(135deg, #e8eef7, #cfd9ea); }
+.slide:nth-child(2) { background: linear-gradient(135deg, #f2ece6, #ddd1c3); }
+.slide:nth-child(3) { background: linear-gradient(135deg, #e9f2e8, #cbe2c8); }
+.slide:nth-child(4) { background: linear-gradient(135deg, #ede9f3, #d5cae5); }
+.slide:nth-child(5) { background: linear-gradient(135deg, #f5ecef, #e6ccd4); }
+.slide:nth-child(6) { background: linear-gradient(135deg, #e8f1f2, #c9dde0); }
+
+.slider-controls {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.slider-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: transform var(--transition), background-color var(--transition);
+}
+
+.slider-btn:hover {
+  transform: translateY(-1px);
+  background: #f1f5f9;
+}
+
+.slider-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.slider-dot {
+  width: 0.65rem;
+  height: 0.65rem;
+  border: 0;
+  border-radius: 50%;
+  background: #cbd5e1;
+  cursor: pointer;
+  transition: transform var(--transition), background-color var(--transition);
+}
+
+.slider-dot.is-active {
+  background: var(--color-primary);
+  transform: scale(1.15);
+}
+
+/* =============================================
    Sections
    ============================================= */
 .section {
@@ -339,5 +427,9 @@ h1, h2, h3, h4, h5, h6 {
 
   .nav-links {
     gap: 1rem;
+  }
+
+  .slider-track {
+    min-height: 300px;
   }
 }
