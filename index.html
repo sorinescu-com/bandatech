@@ -47,32 +47,12 @@
       <div class="hero-img">
       </div>
     </section>
- 
+
+
     <!-- Solutions Slider -->
-    <section id="solutions-slider" class="slider">
-      <div class="slider-shell container" aria-label="Solutions slider">
-        <div class="slider-track" data-slider-track>
-          <article class="slide is-active" aria-hidden="false"></article>
-          <article class="slide" aria-hidden="true"></article>
-          <article class="slide" aria-hidden="true"></article>
-          <article class="slide" aria-hidden="true"></article>
-          <article class="slide" aria-hidden="true"></article>
-          <article class="slide" aria-hidden="true"></article>
-        </div>
-        <div class="slider-controls">
-          <button class="slider-btn" type="button" data-slider-prev aria-label="Previous slide">&#10094;</button>
-          <div class="slider-dots" data-slider-dots>
-            <button class="slider-dot is-active" type="button" data-slider-to="0" aria-label="Slide 1"></button>
-            <button class="slider-dot" type="button" data-slider-to="1" aria-label="Slide 2"></button>
-            <button class="slider-dot" type="button" data-slider-to="2" aria-label="Slide 3"></button>
-            <button class="slider-dot" type="button" data-slider-to="3" aria-label="Slide 4"></button>
-            <button class="slider-dot" type="button" data-slider-to="4" aria-label="Slide 5"></button>
-            <button class="slider-dot" type="button" data-slider-to="5" aria-label="Slide 6"></button>
-          </div>
-          <button class="slider-btn" type="button" data-slider-next aria-label="Next slide">&#10095;</button>
-        </div>
-      </div>
-    </section>
+     <section id="solutions-slider" class="slider">
+
+     </section>
     <!-- About -->
     <section id="about" class="section section--light">
       <div class="container">
@@ -143,43 +123,6 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    const sliderSection = document.getElementById('solutions-slider');
-    if (sliderSection) {
-      const slides = Array.from(sliderSection.querySelectorAll('.slide'));
-      const dots = Array.from(sliderSection.querySelectorAll('.slider-dot'));
-      const prevBtn = sliderSection.querySelector('[data-slider-prev]');
-      const nextBtn = sliderSection.querySelector('[data-slider-next]');
-      let currentSlide = 0;
-
-      function showSlide(index) {
-        currentSlide = (index + slides.length) % slides.length;
-        slides.forEach(function (slide, idx) {
-          slide.classList.toggle('is-active', idx === currentSlide);
-          slide.setAttribute('aria-hidden', idx === currentSlide ? 'false' : 'true');
-        });
-        dots.forEach(function (dot, idx) {
-          dot.classList.toggle('is-active', idx === currentSlide);
-        });
-      }
-
-      prevBtn.addEventListener('click', function () {
-        showSlide(currentSlide - 1);
-      });
-
-      nextBtn.addEventListener('click', function () {
-        showSlide(currentSlide + 1);
-      });
-
-      dots.forEach(function (dot, index) {
-        dot.addEventListener('click', function () {
-          showSlide(index);
-        });
-      });
-
-      showSlide(0);
-    }
-
     document.getElementById('contact-form').addEventListener('submit', function (e) {
       e.preventDefault();
       alert('Thank you for your message! We will get back to you soon.');
