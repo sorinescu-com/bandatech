@@ -15,8 +15,6 @@
   --color-bg: #ffffff;
   --color-bg-light: #f8fafc;
   --color-border: #e2e8f0;
-  --color-hero-bg: #0f172a;
-  --color-hero-text: #f1f5f9;
   --color-footer-bg: #0f172a;
   --color-footer-text: #94a3b8;
 
@@ -128,8 +126,8 @@ h1, h2, h3, h4, h5, h6 {
    Hero Section
    ============================================= */
 .hero {
-  background-color: var(--color-hero-bg);
-  color: var(--color-hero-text);
+  background-color: #fff;
+  color: #000;
   padding: 6rem 0;
   text-align: center;
   display: flex;
