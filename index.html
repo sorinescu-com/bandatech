@@ -50,9 +50,70 @@
 
 
     <!-- Solutions Slider -->
-     <section id="solutions-slider" class="slider">
+    <section id="solutions-slider" class="slider" aria-label="Solutions showcase slider">
+      <div class="slider-viewport">
+        <div class="slider-slides" data-slider-slides>
+          <article class="slider-slide is-active" data-index="0" aria-hidden="false" style="--slide-bg: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1800&q=80');">
+            <div class="slider-panel">
+              <h3 class="slider-title">HVAC Insulation Solutions</h3>
+              <p class="slider-copy">Professional insulation systems that reduce thermal losses and improve long-term efficiency for climate and ventilation installations.</p>
+              <a href="#contact" class="slider-cta">Discover</a>
+            </div>
+          </article>
+          <article class="slider-slide" data-index="1" aria-hidden="true" style="--slide-bg: url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1800&q=80');">
+            <div class="slider-panel">
+              <h3 class="slider-title">Industrial Pipe Protection</h3>
+              <p class="slider-copy">Durable solutions for hot and cold pipes, designed to support safer operation and lower maintenance costs in industrial environments.</p>
+              <a href="#contact" class="slider-cta">Discover</a>
+            </div>
+          </article>
+          <article class="slider-slide" data-index="2" aria-hidden="true" style="--slide-bg: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1800&q=80');">
+            <div class="slider-panel">
+              <h3 class="slider-title">Building Envelope Efficiency</h3>
+              <p class="slider-copy">Smart insulation concepts that keep indoor environments comfortable while helping projects meet modern energy targets.</p>
+              <a href="#contact" class="slider-cta">Discover</a>
+            </div>
+          </article>
+          <article class="slider-slide" data-index="3" aria-hidden="true" style="--slide-bg: url('https://images.unsplash.com/photo-1518005068251-37900150dfca?auto=format&fit=crop&w=1800&q=80');">
+            <div class="slider-panel">
+              <h3 class="slider-title">Acoustic Comfort Systems</h3>
+              <p class="slider-copy">Acoustic insulation options that reduce noise transfer in offices, technical rooms, and mixed-use buildings.</p>
+              <a href="#contact" class="slider-cta">Discover</a>
+            </div>
+          </article>
+          <article class="slider-slide" data-index="4" aria-hidden="true" style="--slide-bg: url('https://images.unsplash.com/photo-1460574283810-2aab119d8511?auto=format&fit=crop&w=1800&q=80');">
+            <div class="slider-panel">
+              <h3 class="slider-title">Fire-Safe Thermal Layers</h3>
+              <p class="slider-copy">Materials selected to support thermal performance and fire safety requirements for complex commercial installations.</p>
+              <a href="#contact" class="slider-cta">Discover</a>
+            </div>
+          </article>
+          <article class="slider-slide" data-index="5" aria-hidden="true" style="--slide-bg: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=80');">
+            <div class="slider-panel">
+              <h3 class="slider-title">Retrofit Modernization</h3>
+              <p class="slider-copy">Upgrade existing systems with precision-fit insulation that improves reliability and extends service life.</p>
+              <a href="#contact" class="slider-cta">Discover</a>
+            </div>
+          </article>
+        </div>
 
-     </section>
+        <span class="slider-counter" data-slider-counter>01</span>
+
+        <div class="slider-indicators" data-slider-indicators aria-label="Slide indicators">
+          <button class="slider-indicator is-active" type="button" aria-label="Go to slide 1" data-go-to="0"></button>
+          <button class="slider-indicator" type="button" aria-label="Go to slide 2" data-go-to="1"></button>
+          <button class="slider-indicator" type="button" aria-label="Go to slide 3" data-go-to="2"></button>
+          <button class="slider-indicator" type="button" aria-label="Go to slide 4" data-go-to="3"></button>
+          <button class="slider-indicator" type="button" aria-label="Go to slide 5" data-go-to="4"></button>
+          <button class="slider-indicator" type="button" aria-label="Go to slide 6" data-go-to="5"></button>
+        </div>
+
+        <div class="slider-nav" aria-label="Slider navigation">
+          <button class="slider-arrow" type="button" data-prev aria-label="Previous slide">&#8592;</button>
+          <button class="slider-arrow" type="button" data-next aria-label="Next slide">&#8594;</button>
+        </div>
+      </div>
+    </section>
     <!-- About -->
     <section id="about" class="section section--light">
       <div class="container">
@@ -123,6 +184,74 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    (function () {
+      const slider = document.getElementById('solutions-slider');
+      if (!slider) return;
+
+      const slides = Array.from(slider.querySelectorAll('.slider-slide'));
+      const indicators = Array.from(slider.querySelectorAll('.slider-indicator'));
+      const counter = slider.querySelector('[data-slider-counter]');
+      const prevButton = slider.querySelector('[data-prev]');
+      const nextButton = slider.querySelector('[data-next]');
+      let currentIndex = 0;
+      let autoplayTimer = null;
+
+      function updateSlider(nextIndex) {
+        currentIndex = (nextIndex + slides.length) % slides.length;
+
+        slides.forEach(function (slide, index) {
+          const isActive = index === currentIndex;
+          slide.classList.toggle('is-active', isActive);
+          slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+        });
+
+        indicators.forEach(function (dot, index) {
+          dot.classList.toggle('is-active', index === currentIndex);
+        });
+
+        counter.textContent = String(currentIndex + 1).padStart(2, '0');
+        counter.classList.remove('is-animating');
+        void counter.offsetWidth;
+        counter.classList.add('is-animating');
+      }
+
+      function startAutoplay() {
+        clearInterval(autoplayTimer);
+        autoplayTimer = setInterval(function () {
+          updateSlider(currentIndex + 1);
+        }, 5000);
+      }
+
+      prevButton.addEventListener('click', function () {
+        updateSlider(currentIndex - 1);
+        startAutoplay();
+      });
+
+      nextButton.addEventListener('click', function () {
+        updateSlider(currentIndex + 1);
+        startAutoplay();
+      });
+
+      indicators.forEach(function (dot, index) {
+        dot.addEventListener('click', function () {
+          updateSlider(index);
+          startAutoplay();
+        });
+      });
+
+      slider.addEventListener('mouseenter', function () {
+        clearInterval(autoplayTimer);
+      });
+
+      slider.addEventListener('mouseleave', function () {
+        startAutoplay();
+      });
+
+      updateSlider(0);
+      startAutoplay();
+    })();
+
     document.getElementById('contact-form').addEventListener('submit', function (e) {
       e.preventDefault();
       alert('Thank you for your message! We will get back to you soon.');
