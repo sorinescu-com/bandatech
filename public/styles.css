@@ -756,8 +756,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .green-actions {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
   margin-top: 2.5rem;
 }
@@ -775,7 +776,7 @@ h1, h2, h3, h4, h5, h6 {
   background: rgba(76, 175, 80, 0.12);
   border: 1px solid rgba(76, 175, 80, 0.35);
   transition: all 0.3s ease;
-  min-width: 280px;
+  /* min-width: 280px; */
   justify-content: center;
 }
 
