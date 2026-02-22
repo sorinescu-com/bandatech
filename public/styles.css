@@ -655,6 +655,153 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* =============================================
+   Green Future Section
+   ============================================= */
+#green-future {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 1.5rem;
+  background-image: url('https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=2000&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+#green-future::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(16, 45, 28, 0.88) 0%, rgba(8, 32, 18, 0.92) 100%);
+  z-index: 1;
+}
+
+.green-future-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.green-box {
+  position: relative;
+  background: rgba(34, 139, 34, 0.15);
+  backdrop-filter: blur(8px);
+  border: 2px solid rgba(76, 175, 80, 0.45);
+  border-radius: 1rem;
+  padding: 4rem 3.5rem;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.green-box::before,
+.green-box::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 1rem;
+  border: 3px solid rgba(76, 175, 80, 0.6);
+  pointer-events: none;
+  animation: greenPulse 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.green-box::after {
+  animation-delay: 1.75s;
+}
+
+.green-title {
+  color: #e8f5e9;
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.75rem;
+}
+
+.green-text {
+  color: rgba(232, 245, 233, 0.92);
+  font-size: clamp(1rem, 1.1vw, 1.2rem);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.green-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.green-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  color: #e8f5e9;
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  background: rgba(76, 175, 80, 0.12);
+  border: 1px solid rgba(76, 175, 80, 0.35);
+  transition: all 0.3s ease;
+  min-width: 280px;
+  justify-content: center;
+}
+
+.green-cta:hover {
+  background: rgba(76, 175, 80, 0.2);
+  border-color: rgba(76, 175, 80, 0.55);
+  transform: translateX(2px);
+}
+
+.green-arrow {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.green-cta:hover .green-arrow {
+  animation: arrowBounce 0.8s ease infinite;
+}
+
+@keyframes greenPulse {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    border-width: 3px;
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.12);
+    border-width: 1px;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.24);
+    border-width: 0px;
+  }
+}
+
+@keyframes arrowBounce {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+/* =============================================
    Cards (Services)
    ============================================= */
 .cards {
@@ -792,6 +939,20 @@ h1, h2, h3, h4, h5, h6 {
     flex-basis: 210px;
     height: 130px;
     padding: 1.1rem;
+  }
+
+  #green-future {
+    padding: 3.5rem 1.2rem;
+    background-attachment: scroll;
+  }
+
+  .green-box {
+    padding: 2.5rem 1.8rem;
+  }
+
+  .green-cta {
+    min-width: 240px;
+    font-size: 0.95rem;
   }
 
   .slider-slide {
