@@ -207,6 +207,19 @@ h1, h2, h3, h4, h5, h6 {
   background: #04070c;
   overflow: hidden;
   --slider-line-y: 14%;
+  --ui-line-color: rgba(255, 255, 255, 0.45);
+  --ui-counter-color: #fff;
+  --ui-counter-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  --ui-dot-border: rgba(255, 255, 255, 0.95);
+  --ui-dot-bg: rgba(255, 255, 255, 0.24);
+  --ui-dot-active-bg: #fff;
+  --ui-dot-active-border: #fff;
+  --ui-arrow-border: rgba(255, 255, 255, 0.7);
+  --ui-arrow-bg: rgba(255, 255, 255, 0.1);
+  --ui-arrow-color: #fff;
+  --ui-arrow-hover-bg: rgba(255, 255, 255, 0.22);
+  --ui-accent-bg: var(--color-primary);
+  --ui-accent-shadow: 0 8px 22px rgba(201, 75, 76, 0.35);
 }
 
 .slider-viewport {
@@ -221,7 +234,8 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   z-index: 3;
   pointer-events: none;
-  background: rgba(255, 255, 255, 0.45);
+  background: var(--ui-line-color);
+  transition: background-color 0.42s ease;
 }
 
 .slider-viewport::before {
@@ -273,7 +287,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .slider-slide::after {
-  background: linear-gradient(92deg, rgba(2, 4, 8, 0.8) 0%, rgba(2, 4, 8, 0.44) 34%, rgba(2, 4, 8, 0.72) 100%);
+  background: var(--slide-overlay, linear-gradient(92deg, rgba(2, 4, 8, 0.8) 0%, rgba(2, 4, 8, 0.44) 34%, rgba(2, 4, 8, 0.72) 100%));
 }
 
 .slider-slide.is-active {
@@ -291,14 +305,14 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 5;
   width: min(36vw, 520px);
   min-height: 330px;
-  background: rgba(245, 245, 245, 0.94);
+  background: var(--panel-bg, rgba(245, 245, 245, 0.94));
   backdrop-filter: blur(2px);
   padding: 2.35rem 2rem 2.1rem;
-  color: #111;
+  color: var(--panel-text, #111);
   transform: translateX(42px) translateY(24px);
   opacity: 0;
   transition: transform 0.7s cubic-bezier(0.18, 0.68, 0.2, 1), opacity 0.55s ease;
-  box-shadow: 0 26px 58px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--panel-shadow, 0 26px 58px rgba(0, 0, 0, 0.4));
 }
 
 .slider-title,
@@ -309,7 +323,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .slider-title {
-  color: #d52f32;
+  color: var(--panel-title, #d52f32);
   font-size: clamp(1.65rem, 1.95vw, 2.25rem);
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -318,7 +332,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .slider-copy {
-  color: #4a4f58;
+  color: var(--panel-copy, #4a4f58);
   font-family: var(--font-family);
   font-size: 0.95rem;
   line-height: 1.95;
@@ -331,7 +345,7 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: #111;
+  color: var(--panel-cta, #111);
   font-weight: 700;
   font-size: 0.72rem;
   text-transform: uppercase;
@@ -369,12 +383,13 @@ h1, h2, h3, h4, h5, h6 {
   top: 1rem;
   left: 1rem;
   z-index: 6;
-  color: #fff;
+  color: var(--ui-counter-color);
   font-family: var(--font-family-h);
   font-size: clamp(2rem, 2.8vw, 3rem);
   font-weight: 600;
   letter-spacing: -0.08em;
-  text-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  text-shadow: var(--ui-counter-shadow);
+  transition: color 0.42s ease, text-shadow 0.42s ease;
 }
 
 .slider-counter.is-animating {
@@ -393,8 +408,8 @@ h1, h2, h3, h4, h5, h6 {
 .slider-indicator {
   width: 8px;
   height: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.95);
-  background: rgba(255, 255, 255, 0.24);
+  border: 1px solid var(--ui-dot-border);
+  background: var(--ui-dot-bg);
   cursor: pointer;
   transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
@@ -404,8 +419,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .slider-indicator.is-active {
-  background: #fff;
-  border-color: #fff;
+  background: var(--ui-dot-active-bg);
+  border-color: var(--ui-dot-active-border);
   transform: scale(1.16);
 }
 
@@ -422,27 +437,28 @@ h1, h2, h3, h4, h5, h6 {
   content: "";
   width: 30px;
   height: 30px;
-  background: var(--color-primary);
+  background: var(--ui-accent-bg);
   margin-right: 0.45rem;
-  box-shadow: 0 8px 22px rgba(201, 75, 76, 0.35);
+  box-shadow: var(--ui-accent-shadow);
+  transition: background-color 0.42s ease, box-shadow 0.42s ease;
 }
 
 .slider-arrow {
   width: 40px;
   height: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
+  border: 1px solid var(--ui-arrow-border);
+  background: var(--ui-arrow-bg);
+  color: var(--ui-arrow-color);
   font-size: 1.35rem;
   line-height: 1;
   cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .slider-arrow:hover {
   transform: translateY(-1px);
-  background: rgba(255, 255, 255, 0.22);
-  border-color: #fff;
+  background: var(--ui-arrow-hover-bg);
+  border-color: var(--ui-arrow-border);
 }
 
 @keyframes counterPulse {
