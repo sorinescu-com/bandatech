@@ -444,26 +444,9 @@
 
       const originalCards = Array.from(track.querySelectorAll('.project-card'));
       const originalCount = originalCards.length;
-      const cloneCount = Math.min(3, originalCount);
-      let currentIndex = cloneCount;
+      let currentIndex = 0;
+      let maxIndex = 0;
       let cardStep = 0;
-
-      function cloneCard(card) {
-        const clone = card.cloneNode(true);
-        clone.setAttribute('aria-hidden', 'true');
-        return clone;
-      }
-
-      const prependClones = originalCards.slice(-cloneCount).map(cloneCard);
-      const appendClones = originalCards.slice(0, cloneCount).map(cloneCard);
-      prependClones.forEach(function (clone) {
-        track.insertBefore(clone, track.firstChild);
-      });
-      appendClones.forEach(function (clone) {
-        track.appendChild(clone);
-      });
-
-      const allCards = Array.from(track.querySelectorAll('.project-card'));
 
       function readGap() {
         return parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || '0');
@@ -474,12 +457,13 @@
         const cardsVisible = window.innerWidth <= 640 ? 1.35 : 2.5;
         const targetCardWidth = (windowElement.clientWidth - (gap * (cardsVisible - 1))) / cardsVisible;
 
-        allCards.forEach(function (card) {
+        originalCards.forEach(function (card) {
           card.style.flexBasis = targetCardWidth + 'px';
           card.style.maxWidth = targetCardWidth + 'px';
         });
 
         cardStep = targetCardWidth + gap;
+        maxIndex = Math.max(0, originalCount - Math.ceil(cardsVisible));
       }
 
       function moveTo(index, withTransition) {
@@ -487,41 +471,38 @@
         track.style.transform = 'translateX(' + (-index * cardStep) + 'px)';
       }
 
-      function normalizeIfNeeded() {
-        if (currentIndex >= originalCount + cloneCount) {
-          currentIndex -= originalCount;
-          moveTo(currentIndex, false);
-        }
-        if (currentIndex < cloneCount) {
-          currentIndex += originalCount;
-          moveTo(currentIndex, false);
-        }
+      function updateControls() {
+        prevButton.disabled = currentIndex <= 0;
+        nextButton.disabled = currentIndex >= maxIndex;
       }
 
       function nextSlide() {
+        if (currentIndex >= maxIndex) return;
         currentIndex += 1;
         moveTo(currentIndex, true);
+        updateControls();
       }
 
       function prevSlide() {
+        if (currentIndex <= 0) return;
         currentIndex -= 1;
         moveTo(currentIndex, true);
+        updateControls();
       }
 
       nextButton.addEventListener('click', nextSlide);
       prevButton.addEventListener('click', prevSlide);
 
-      track.addEventListener('transitionend', function () {
-        normalizeIfNeeded();
-      });
-
       window.addEventListener('resize', function () {
         measureStep();
+        currentIndex = Math.min(currentIndex, maxIndex);
         moveTo(currentIndex, false);
+        updateControls();
       });
 
       measureStep();
       moveTo(currentIndex, false);
+      updateControls();
     })();
 
     document.getElementById('contact-form').addEventListener('submit', function (e) {
