@@ -698,6 +698,24 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
+.green-pulse {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 1rem;
+  border: 3px solid rgba(76, 175, 80, 0.6);
+  pointer-events: none;
+  animation: greenPulse 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.green-pulse:nth-of-type(1) {
+  animation-delay: 0s;
+}
+
+.green-pulse:nth-of-type(2) {
+  animation-delay: 1.5s;
+}
+
 .green-box::before,
 .green-box::after {
   content: "";
@@ -706,11 +724,15 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 1rem;
   border: 3px solid rgba(76, 175, 80, 0.6);
   pointer-events: none;
-  animation: greenPulse 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation: greenPulse 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.green-box::before {
+  animation-delay: 3s;
 }
 
 .green-box::after {
-  animation-delay: 1.75s;
+  animation-delay: 4.5s;
 }
 
 .green-title {
