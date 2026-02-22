@@ -101,7 +101,9 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-primary);
   letter-spacing: -0.02em;
 }
-
+.nav-logo img {
+  max-height: 70px;
+}
 .nav-links {
   display: flex;
   gap: 2rem;
