@@ -415,8 +415,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .slider-nav::before {
   content: "";
-  width: 30px;
-  height: 30px;
+  width: 68px;
+  height: 68px;
   background: var(--ui-accent-bg);
   margin-right: 0.45rem;
   box-shadow: var(--ui-accent-shadow);
@@ -424,8 +424,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .slider-arrow {
-  width: 40px;
-  height: 40px;
+  width: 68px;
+  height: 68px;
   border: 1px solid var(--ui-arrow-border);
   background: var(--ui-arrow-bg);
   color: var(--ui-arrow-color);
