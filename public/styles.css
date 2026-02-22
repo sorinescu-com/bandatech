@@ -700,7 +700,7 @@ h1, h2, h3, h4, h5, h6 {
 .green-pulse {
   content: "";
   position: absolute;
-  inset: -6px;
+  inset: 0;
   border: 3px solid rgba(76, 175, 80, 0.6);
   pointer-events: none;
   animation: greenPulse 8s linear infinite;
@@ -718,7 +718,7 @@ h1, h2, h3, h4, h5, h6 {
 .green-box::after {
   content: "";
   position: absolute;
-  inset: -10px;
+  inset: 0;
   border: 3px solid rgba(76, 175, 80, 0.6);
   pointer-events: none;
   animation: greenPulse 8s linear infinite;
