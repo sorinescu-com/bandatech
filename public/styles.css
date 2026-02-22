@@ -405,7 +405,7 @@ h1, h2, h3, h4, h5, h6 {
 .slider-nav {
   position: absolute;
   right: clamp(1rem, 7vw, 6.5rem);
-  bottom: calc(var(--slider-line-y) - 1rem);
+  bottom: calc(var(--slider-line-y) - 39px);
   z-index: 7;
   display: inline-flex;
   gap: 0.45rem;
