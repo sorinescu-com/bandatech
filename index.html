@@ -447,6 +447,7 @@
       let currentIndex = 0;
       let maxIndex = 0;
       let cardStep = 0;
+      let peekSide = 'right';
 
       function readGap() {
         return parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || '0');
@@ -467,8 +468,9 @@
       }
 
       function moveTo(index, withTransition) {
+        const offset = peekSide === 'left' ? 0.5 : 0;
         track.style.transition = withTransition ? 'transform 0.55s cubic-bezier(0.2, 0.72, 0.2, 1)' : 'none';
-        track.style.transform = 'translateX(' + (-index * cardStep) + 'px)';
+        track.style.transform = 'translateX(' + (-(index - offset) * cardStep) + 'px)';
       }
 
       function updateControls() {
@@ -478,6 +480,7 @@
 
       function nextSlide() {
         if (currentIndex >= maxIndex) return;
+        peekSide = 'left';
         currentIndex += 1;
         moveTo(currentIndex, true);
         updateControls();
@@ -485,6 +488,7 @@
 
       function prevSlide() {
         if (currentIndex <= 0) return;
+        peekSide = 'right';
         currentIndex -= 1;
         moveTo(currentIndex, true);
         updateControls();
@@ -501,6 +505,7 @@
       });
 
       measureStep();
+      peekSide = 'right';
       moveTo(currentIndex, false);
       updateControls();
     })();
