@@ -596,6 +596,65 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* =============================================
+   About Logos Section
+   ============================================= */
+#about {
+  padding: 7rem 0;
+  overflow: hidden;
+}
+
+.about-title {
+  max-width: 980px;
+  margin: 0 auto 4rem;
+  text-align: center;
+  font-size: clamp(2rem, 3.2vw, 4rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.logo-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.logo-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 1.25rem;
+  animation: logoMarquee 36s linear infinite;
+}
+
+.logo-item {
+  flex: 0 0 280px;
+  height: 170px;
+  background: #fff;
+  border: 1px solid #dfe3e7;
+  display: grid;
+  place-items: center;
+  padding: 1.8rem;
+}
+
+.logo-item img {
+  width: 100%;
+  max-width: 190px;
+  max-height: 72px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.9;
+}
+
+@keyframes logoMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 0.625rem));
+  }
+}
+
+/* =============================================
    Cards (Services)
    ============================================= */
 .cards {
@@ -718,6 +777,21 @@ h1, h2, h3, h4, h5, h6 {
     min-height: 560px;
     height: 82vh;
     --slider-line-y: 19%;
+  }
+
+  #about {
+    padding: 4.5rem 0;
+  }
+
+  .about-title {
+    margin-bottom: 2.2rem;
+    font-size: clamp(1.7rem, 9vw, 2.5rem);
+  }
+
+  .logo-item {
+    flex-basis: 210px;
+    height: 130px;
+    padding: 1.1rem;
   }
 
   .slider-slide {
