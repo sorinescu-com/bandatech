@@ -604,7 +604,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .about-title {
-  max-width: 980px;
+  max-width: var(--page-width);
   margin: 0 auto 4rem;
   text-align: center;
   font-size: clamp(2rem, 3.2vw, 4rem);
