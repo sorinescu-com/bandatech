@@ -55,7 +55,7 @@
         <div class="slider-slides" data-slider-slides>
           <article class="slider-slide is-active" data-index="0" aria-hidden="false" style="--slide-bg: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1800&q=80'); --slide-overlay: linear-gradient(92deg, rgba(2, 4, 8, 0.82) 0%, rgba(2, 4, 8, 0.44) 34%, rgba(2, 4, 8, 0.72) 100%); --ui-line-color: rgba(255, 255, 255, 0.45); --ui-counter-color: #ffffff; --ui-counter-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); --ui-dot-border: rgba(255, 255, 255, 0.95); --ui-dot-bg: rgba(255, 255, 255, 0.24); --ui-dot-active-bg: #ffffff; --ui-dot-active-border: #ffffff; --ui-arrow-border: rgba(255, 255, 255, 0.7); --ui-arrow-bg: rgba(255, 255, 255, 0.1); --ui-arrow-color: #ffffff; --ui-arrow-hover-bg: rgba(255, 255, 255, 0.22); --ui-accent-bg: #c94b4c; --ui-accent-shadow: 0 8px 22px rgba(201, 75, 76, 0.35); --panel-bg: rgba(245, 245, 245, 0.94); --panel-text: #111111; --panel-title: #d52f32; --panel-copy: #4a4f58; --panel-cta: #111111; --panel-shadow: 0 26px 58px rgba(0, 0, 0, 0.4);">
             <div class="slider-panel">
-              <h3 class="slider-title">qqq HVAC Insulation Solutions</h3>
+              <h3 class="slider-title">zzz HVAC Insulation Solutions</h3>
               <p class="slider-copy">Professional insulation systems that reduce thermal losses and improve long-term efficiency for climate and ventilation installations.</p>
               <a href="#contact" class="slider-cta">Discover</a>
             </div>
@@ -208,6 +208,7 @@
       let currentIndex = 0;
       let autoplayTimer = null;
       let transitionResetTimer = null;
+      let panelResizeObserver = null;
 
       const uiVars = [
         '--ui-line-color',
@@ -243,17 +244,33 @@
         const activePanel = activeSlide.querySelector('.slider-panel');
         if (!activePanel) return;
 
-        const sliderRect = slider.getBoundingClientRect();
-        const panelRect = activePanel.getBoundingClientRect();
-        const panelLeft = Math.max(0, panelRect.left - sliderRect.left);
-        const panelTop = Math.max(0, panelRect.top - sliderRect.top);
-        const panelRight = Math.max(panelLeft, panelRect.right - sliderRect.left);
-        const panelBottom = Math.max(panelTop, panelRect.bottom - sliderRect.top);
+        const panelLeft = Math.max(0, activePanel.offsetLeft);
+        const panelTop = Math.max(0, activePanel.offsetTop);
+        const panelRight = Math.min(slider.clientWidth, panelLeft + activePanel.offsetWidth);
+        const panelBottom = Math.min(slider.clientHeight, panelTop + activePanel.offsetHeight);
 
         slider.style.setProperty('--panel-left', panelLeft + 'px');
         slider.style.setProperty('--panel-top', panelTop + 'px');
         slider.style.setProperty('--panel-right', panelRight + 'px');
         slider.style.setProperty('--panel-bottom', panelBottom + 'px');
+      }
+
+      function observeActivePanel() {
+        const activeSlide = slides[currentIndex];
+        if (!activeSlide || !('ResizeObserver' in window)) return;
+        const activePanel = activeSlide.querySelector('.slider-panel');
+        if (!activePanel) return;
+
+        if (panelResizeObserver) {
+          panelResizeObserver.disconnect();
+        }
+
+        panelResizeObserver = new ResizeObserver(function () {
+          syncConnectorGeometry();
+        });
+
+        panelResizeObserver.observe(activePanel);
+        panelResizeObserver.observe(slider);
       }
 
       function restartTransitionSequence() {
@@ -281,8 +298,10 @@
 
         counter.textContent = String(currentIndex + 1).padStart(2, '0');
         applySlideTheme(slides[currentIndex]);
-  syncConnectorGeometry();
-  restartTransitionSequence();
+          observeActivePanel();
+          syncConnectorGeometry();
+          requestAnimationFrame(syncConnectorGeometry);
+          restartTransitionSequence();
         counter.classList.remove('is-animating');
         void counter.offsetWidth;
         counter.classList.add('is-animating');

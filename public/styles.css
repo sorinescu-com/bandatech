@@ -285,7 +285,7 @@ h1, h2, h3, h4, h5, h6 {
   backdrop-filter: blur(2px);
   padding: 2.35rem 2rem 2.1rem;
   color: var(--panel-text, #111);
-  transform: translateX(42px) translateY(24px);
+  transform: translateY(88px);
   opacity: 0;
   transition: transform 0.9s cubic-bezier(0.18, 0.68, 0.2, 1) 0.65s, opacity 0.9s ease 0.65s;
   box-shadow: var(--panel-shadow, 0 26px 58px rgba(0, 0, 0, 0.4));
@@ -295,7 +295,7 @@ h1, h2, h3, h4, h5, h6 {
 .slider-copy,
 .slider-cta {
   opacity: 0;
-  transform: translateY(12px);
+  transform: translateY(20px);
 }
 
 .slider-title {
