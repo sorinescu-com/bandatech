@@ -112,6 +112,13 @@
           <button class="slider-arrow" type="button" data-prev aria-label="Previous slide">&#8592;</button>
           <button class="slider-arrow" type="button" data-next aria-label="Next slide">&#8594;</button>
         </div>
+
+        <div class="slider-connectors" aria-hidden="true">
+          <span class="slider-connector slider-connector--tl"></span>
+          <span class="slider-connector slider-connector--tr"></span>
+          <span class="slider-connector slider-connector--bl"></span>
+          <span class="slider-connector slider-connector--br"></span>
+        </div>
       </div>
     </section>
     
@@ -200,6 +207,7 @@
       const nextButton = slider.querySelector('[data-next]');
       let currentIndex = 0;
       let autoplayTimer = null;
+      let transitionResetTimer = null;
 
       const uiVars = [
         '--ui-line-color',
@@ -229,6 +237,35 @@
         });
       }
 
+      function syncConnectorGeometry() {
+        const activeSlide = slides[currentIndex];
+        if (!activeSlide) return;
+        const activePanel = activeSlide.querySelector('.slider-panel');
+        if (!activePanel) return;
+
+        const sliderRect = slider.getBoundingClientRect();
+        const panelRect = activePanel.getBoundingClientRect();
+        const panelLeft = Math.max(0, panelRect.left - sliderRect.left);
+        const panelTop = Math.max(0, panelRect.top - sliderRect.top);
+        const panelRight = Math.max(panelLeft, panelRect.right - sliderRect.left);
+        const panelBottom = Math.max(panelTop, panelRect.bottom - sliderRect.top);
+
+        slider.style.setProperty('--panel-left', panelLeft + 'px');
+        slider.style.setProperty('--panel-top', panelTop + 'px');
+        slider.style.setProperty('--panel-right', panelRight + 'px');
+        slider.style.setProperty('--panel-bottom', panelBottom + 'px');
+      }
+
+      function restartTransitionSequence() {
+        clearTimeout(transitionResetTimer);
+        slider.classList.remove('is-transitioning');
+        void slider.offsetWidth;
+        slider.classList.add('is-transitioning');
+        transitionResetTimer = setTimeout(function () {
+          slider.classList.remove('is-transitioning');
+        }, 3600);
+      }
+
       function updateSlider(nextIndex) {
         currentIndex = (nextIndex + slides.length) % slides.length;
 
@@ -244,6 +281,8 @@
 
         counter.textContent = String(currentIndex + 1).padStart(2, '0');
         applySlideTheme(slides[currentIndex]);
+  syncConnectorGeometry();
+  restartTransitionSequence();
         counter.classList.remove('is-animating');
         void counter.offsetWidth;
         counter.classList.add('is-animating');
@@ -279,6 +318,10 @@
 
       slider.addEventListener('mouseleave', function () {
         startAutoplay();
+      });
+
+      window.addEventListener('resize', function () {
+        syncConnectorGeometry();
       });
 
       updateSlider(0);
