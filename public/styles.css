@@ -692,7 +692,6 @@ h1, h2, h3, h4, h5, h6 {
   background: rgba(34, 139, 34, 0.15);
   backdrop-filter: blur(8px);
   border: 2px solid rgba(76, 175, 80, 0.45);
-  border-radius: 1rem;
   padding: 4rem 3.5rem;
   text-align: center;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -702,37 +701,35 @@ h1, h2, h3, h4, h5, h6 {
   content: "";
   position: absolute;
   inset: -6px;
-  border-radius: 1rem;
   border: 3px solid rgba(76, 175, 80, 0.6);
   pointer-events: none;
-  animation: greenPulse 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation: greenPulse 8s linear infinite;
 }
 
 .green-pulse:nth-of-type(1) {
-  animation-delay: 0s;
+  animation-delay: 4s;
 }
 
 .green-pulse:nth-of-type(2) {
-  animation-delay: 1.5s;
+  animation-delay: 6s;
 }
 
 .green-box::before,
 .green-box::after {
   content: "";
   position: absolute;
-  inset: -6px;
-  border-radius: 1rem;
+  inset: -10px;
   border: 3px solid rgba(76, 175, 80, 0.6);
   pointer-events: none;
-  animation: greenPulse 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation: greenPulse 8s linear infinite;
 }
 
 .green-box::before {
-  animation-delay: 3s;
+  animation-delay: 0s;
 }
 
 .green-box::after {
-  animation-delay: 4.5s;
+  animation-delay: 2s;
 }
 
 .green-title {
@@ -800,17 +797,17 @@ h1, h2, h3, h4, h5, h6 {
 @keyframes greenPulse {
   0% {
     opacity: 1;
-    transform: scale(1);
-    border-width: 3px;
+    transform: scale(1, 1);
+    border-width: 2px;
   }
   50% {
     opacity: 0.3;
-    transform: scale(1.12);
+    transform: scale(1.06, 1.12);
     border-width: 1px;
   }
   100% {
     opacity: 0;
-    transform: scale(1.24);
+    transform: scale(1.12, 1.24);
     border-width: 0px;
   }
 }
