@@ -936,6 +936,115 @@ h1, h2, h3, h4, h5, h6 {
   padding-bottom: 0.65rem;
 }
 
+.projects-page {
+  padding-top: clamp(3rem, 6vw, 5.5rem);
+  padding-bottom: clamp(4rem, 7vw, 6rem);
+}
+
+.projects-page-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 5vw, 4rem);
+  align-items: start;
+  margin-bottom: clamp(2.2rem, 5vw, 3.8rem);
+}
+
+.projects-page-title {
+  color: var(--color-primary-dark);
+  font-size: clamp(2.2rem, 5.1vw, 4rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  max-width: 14ch;
+}
+
+.projects-page-intro {
+  font-family: var(--font-family);
+  color: #2c3139;
+  font-size: clamp(0.95rem, 1.12vw, 1.12rem);
+  line-height: 1.65;
+  max-width: 42ch;
+  justify-self: end;
+}
+
+.projects-page-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.2rem, 2vw, 1.8rem);
+}
+
+.projects-page-card {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  background: #f3f3f3;
+  padding: clamp(1.2rem, 2vw, 1.8rem);
+  min-height: clamp(470px, 44vw, 620px);
+  border: 1px solid #dfdfdf;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.projects-page-card:nth-child(even) {
+  margin-top: clamp(2rem, 7vw, 5.5rem);
+}
+
+.projects-page-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.projects-page-number {
+  color: #bcbcbc;
+  font-family: var(--font-family-h);
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 0.7rem;
+}
+
+.projects-page-card-title {
+  font-size: clamp(1.55rem, 2.05vw, 2.15rem);
+  letter-spacing: -0.02em;
+  line-height: 1.03;
+  margin-bottom: 1rem;
+}
+
+.projects-page-card-text {
+  font-family: var(--font-family);
+  font-size: clamp(0.9rem, 1.02vw, 1rem);
+  line-height: 1.5;
+  color: #2f3540;
+  margin-bottom: 1.1rem;
+}
+
+.projects-page-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  align-self: end;
+}
+
+@media (max-width: 980px) {
+  .projects-page-hero {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+  }
+
+  .projects-page-intro {
+    justify-self: start;
+    max-width: 64ch;
+  }
+
+  .projects-page-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-page-card,
+  .projects-page-card:nth-child(even) {
+    min-height: 0;
+    margin-top: 0;
+  }
+}
+
 /* =============================================
    Cards (Services)
    ============================================= */
