@@ -145,6 +145,7 @@ h1, h2, h3, h4, h5, h6 {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center bottom;
+  max-width: 1200px;
 }
 .hero-content > * {
   max-width: calc(var(--page-width) / 2);
