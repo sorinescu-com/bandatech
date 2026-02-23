@@ -1266,16 +1266,15 @@ h1, h2, h3, h4, h5, h6 {
 .footer-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 2.5rem;
+  gap: 2rem;
 }
 
 .footer-nav a {
   color: #ffffff;
   text-decoration: none;
   font-family: var(--font-family-h);
-  font-size: clamp(1.8rem, 3.2vw, 3rem);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
   font-weight: 700;
-  font-style: italic;
   transition: opacity 0.25s;
 }
 
