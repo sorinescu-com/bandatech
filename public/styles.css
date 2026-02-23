@@ -1024,6 +1024,89 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* =============================================
+   About Us Page
+   ============================================= */
+#about-us {
+  background: #f0f0f0;
+  padding: 2.5rem 0 3.5rem;
+}
+
+.about-us-shell {
+  width: min(1120px, calc(100% - 3rem));
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.about-us-item {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.about-us-item:first-child {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 560px;
+}
+
+.about-us-content {
+  width: 100%;
+}
+
+.about-us-heading {
+  position: relative;
+  color: var(--color-primary-dark);
+  font-size: clamp(1.9rem, 2.2vw, 2.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.about-us-item--line-right .about-us-heading::after,
+.about-us-item--line-left .about-us-heading::before {
+  content: "";
+  position: absolute;
+  top: 52%;
+  width: 100vw;
+  height: 1px;
+  background: rgba(206, 44, 46, 0.38);
+}
+
+.about-us-item--line-right .about-us-heading::after {
+  left: calc(100% + 1rem);
+}
+
+.about-us-item--line-left .about-us-heading::before {
+  right: calc(100% + 1rem);
+}
+
+.about-us-copy {
+  font-family: var(--font-family);
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: rgba(0, 0, 0, 0.72);
+  max-width: 54ch;
+}
+
+.about-us-image {
+  width: 100%;
+  max-width: 430px;
+  justify-self: center;
+  object-fit: cover;
+}
+
+.about-us-item--image-left .about-us-image {
+  order: 1;
+}
+
+.about-us-item--image-left .about-us-content {
+  order: 2;
+}
+
+/* =============================================
    Footer
    ============================================= */
 .site-footer {
@@ -1529,6 +1612,41 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+  }
+
+  #about-us {
+    padding: 1.8rem 0 2.6rem;
+  }
+
+  .about-us-shell {
+    width: calc(100% - 2.2rem);
+    gap: 2rem;
+  }
+
+  .about-us-item,
+  .about-us-item:first-child {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    max-width: none;
+  }
+
+  .about-us-item--image-left .about-us-image,
+  .about-us-item--image-left .about-us-content {
+    order: initial;
+  }
+
+  .about-us-heading {
+    font-size: clamp(1.7rem, 8vw, 2.1rem);
+  }
+
+  .about-us-copy {
+    font-size: 0.97rem;
+    line-height: 1.65;
+  }
+
+  .about-us-item--line-right .about-us-heading::after,
+  .about-us-item--line-left .about-us-heading::before {
+    display: none;
   }
 
   .catalog-shell {
