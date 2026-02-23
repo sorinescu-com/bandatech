@@ -1276,7 +1276,7 @@ h1, h2, h3, h4, h5, h6 {
   visibility: hidden;
   pointer-events: none;
   transform: translateX(0);
-  transition: transform 5s cubic-bezier(0.2, 0.72, 0.2, 1), opacity 2s ease;
+  transition: transform 1s cubic-bezier(0.2, 0.72, 0.2, 1), opacity 1s ease;
   width: min(1360px, calc(100% - 8rem));
   margin: 0 auto;
   background: #E6E6E6;
