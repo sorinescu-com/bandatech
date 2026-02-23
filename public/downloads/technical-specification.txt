@@ -1,0 +1,1 @@
+Bandatech – Technical Specification\nProduct: ArmaFlex ACE Plus\n\nThermal Conductivity (0°C): 0.033 W/(m·K)\nTemperature Range: -50°C to +110°C\nWater Vapor Diffusion Resistance (μ): >= 10,000\nReaction to Fire: BL-s3,d0\n\nFor complete implementation details, contact Bandatech technical support.
