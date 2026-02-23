@@ -34,7 +34,6 @@
   </header>
 
   <main>
-
     <section id="solutions" class="catalog-solutions" aria-label="Product categories slider">
       <div id="solutions-slider" class="catalog-shell" data-catalog-slider>
         <article class="catalog-slide is-active" data-category="HVAC Insulation" aria-hidden="false">
@@ -367,28 +366,91 @@
       if (!slides.length || !prevButton || !nextButton) return;
 
       let currentIndex = 0;
+      let isAnimating = false;
+      let animationTimer = null;
 
-      function updateSlider(nextIndex) {
-        currentIndex = (nextIndex + slides.length) % slides.length;
+      function clearTransientClasses(slide) {
+        slide.classList.remove(
+          'is-entering',
+          'is-exiting',
+          'is-enter-from-right',
+          'is-enter-from-left',
+          'is-exit-to-left',
+          'is-exit-to-right'
+        );
+      }
 
+      function setSectionCategory(index) {
+        section.setAttribute('data-active-category', slides[index].dataset.category || '');
+      }
+
+      function initializeSlider() {
         slides.forEach(function (slide, index) {
+          clearTransientClasses(slide);
           const isActive = index === currentIndex;
           slide.classList.toggle('is-active', isActive);
           slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
         });
+        setSectionCategory(currentIndex);
+      }
 
-        section.setAttribute('data-active-category', slides[currentIndex].dataset.category || '');
+      function finalizeTransition(nextIndex, outgoingSlide, incomingSlide) {
+        clearTimeout(animationTimer);
+        clearTransientClasses(outgoingSlide);
+        clearTransientClasses(incomingSlide);
+
+        outgoingSlide.classList.remove('is-active');
+        outgoingSlide.setAttribute('aria-hidden', 'true');
+
+        incomingSlide.classList.add('is-active');
+        incomingSlide.setAttribute('aria-hidden', 'false');
+
+        currentIndex = nextIndex;
+        setSectionCategory(currentIndex);
+        isAnimating = false;
+      }
+
+      function updateSlider(nextIndex, direction) {
+        if (isAnimating) return;
+
+        const targetIndex = (nextIndex + slides.length) % slides.length;
+        if (targetIndex === currentIndex) return;
+
+        isAnimating = true;
+        clearTimeout(animationTimer);
+
+        const outgoingSlide = slides[currentIndex];
+        const incomingSlide = slides[targetIndex];
+
+        clearTransientClasses(outgoingSlide);
+        clearTransientClasses(incomingSlide);
+
+        incomingSlide.classList.add('is-entering');
+        incomingSlide.classList.add(direction === 'prev' ? 'is-enter-from-left' : 'is-enter-from-right');
+        incomingSlide.setAttribute('aria-hidden', 'false');
+
+        requestAnimationFrame(function () {
+          outgoingSlide.classList.add('is-exiting');
+          outgoingSlide.classList.add(direction === 'prev' ? 'is-exit-to-right' : 'is-exit-to-left');
+
+          incomingSlide.classList.add('is-active');
+          incomingSlide.classList.remove('is-enter-from-left', 'is-enter-from-right');
+        });
+
+        animationTimer = setTimeout(function () {
+          finalizeTransition(targetIndex, outgoingSlide, incomingSlide);
+        }, 700);
       }
 
       prevButton.addEventListener('click', function () {
-        updateSlider(currentIndex - 1);
+        updateSlider(currentIndex - 1, 'prev');
       });
 
       nextButton.addEventListener('click', function () {
-        updateSlider(currentIndex + 1);
+        updateSlider(currentIndex + 1, 'next');
       });
 
-      updateSlider(0);
+      initializeSlider();
     })();
 
     (function () {
