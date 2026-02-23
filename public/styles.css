@@ -981,9 +981,13 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid #dfdfdf;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
+.projects-page-card:nth-child(odd) {
+  position: relative;
+  top: -80px;
+}
 .projects-page-card:nth-child(even) {
-  margin-top: clamp(2rem, 7vw, 5.5rem);
+  position: relative;
+  top: 80px;
 }
 
 .projects-page-card:hover {
