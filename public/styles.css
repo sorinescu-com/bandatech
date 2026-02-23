@@ -1164,25 +1164,20 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 125%;
   background-size: cover;
   background-position: top right;
+  background-repeat: no-repeat;
 }
 
 .catalog-products-grid {
   margin-top: 1.35rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
   gap: 1rem;
 }
 
 .catalog-product-card {
-  background: #f7f7f7;
-  border: 1px solid #e4e4e4;
-  border-radius: 0.55rem;
-  padding: 1rem;
-  min-height: 260px;
-  display: grid;
-  grid-template-rows: auto 140px auto;
-  align-content: start;
-  gap: 0.75rem;
+  background: #fff;
+  border-radius: 30px;
+  position: relative;
   transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
 }
 
@@ -1195,18 +1190,22 @@ h1, h2, h3, h4, h5, h6 {
 .catalog-product-title {
   font-size: 1.5rem;
   line-height: 1.15;
+  padding: 30px 30px 0;
 }
 
 .catalog-product-image {
-  width: 100%;
-  height: 140px;
+  width: 60%;
   object-fit: cover;
-  border-radius: 0.35rem;
+  border-radius: 0 0 0 30px;
   transition: transform 0.24s ease;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform-origin: bottom left;
 }
 
 .catalog-product-card:hover .catalog-product-image {
-  transform: scale(1.03);
+  transform: scale(1.1);
 }
 
 .catalog-product-text {
@@ -1214,6 +1213,9 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-family);
   font-size: 0.94rem;
   line-height: 1.55;
+  padding: 30px 30px 30px calc(50% + 30px);
+  position: relative;
+  z-index: 100;
 }
 
 .catalog-nav-arrow {
