@@ -978,7 +978,7 @@ h1, h2, h3, h4, h5, h6 {
 .projects-page-card {
   display: grid;
   grid-template-rows: auto auto 1fr auto;
-  background: #f3f3f3;
+  background: #fff;
   padding: clamp(1.2rem, 2vw, 1.8rem);
   min-height: clamp(470px, 44vw, 620px);
   border: 1px solid #dfdfdf;
