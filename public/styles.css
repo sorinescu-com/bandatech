@@ -1058,8 +1058,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .catalog-shell {
-  width: min(1360px, calc(100% - 8rem));
-  margin: 0 auto;
+  /* width: min(1360px, calc(100% - 8rem)); */
+  /* margin: 0 auto; */
   position: relative;
   overflow: hidden;
 }
@@ -1071,7 +1071,12 @@ h1, h2, h3, h4, h5, h6 {
   visibility: hidden;
   pointer-events: none;
   transform: translateX(0);
-  transition: transform 5s cubic-bezier(0.2, 0.72, 0.2, 1), opacity 5s ease;
+  transition: transform 5s cubic-bezier(0.2, 0.72, 0.2, 1), opacity 2s ease;
+  width: min(1360px, calc(100% - 8rem));
+  margin: 0 auto;
+  background: #E6E6E6;
+  padding: 40px;
+  border-radius: 20px;
 }
 
 .catalog-slide.is-active {
@@ -1210,7 +1215,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .catalog-nav-arrow {
   position: fixed;
-  top: 52%;
+  top: 30%;
   width: 58px;
   height: 58px;
   border: 1px solid rgba(0, 0, 0, 0.7);
@@ -1225,6 +1230,7 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
   z-index: 80;
   transition: transform 0.2s ease, background-color 0.2s ease;
+  padding-bottom: 4px;
 }
 
 .catalog-nav-arrow:hover {
