@@ -368,6 +368,7 @@
       let currentIndex = 0;
       let isAnimating = false;
       let animationTimer = null;
+      const transitionDurationMs = 5000;
 
       function clearTransientClasses(slide) {
         slide.classList.remove(
@@ -438,7 +439,7 @@
 
         animationTimer = setTimeout(function () {
           finalizeTransition(targetIndex, outgoingSlide, incomingSlide);
-        }, 4999);
+        }, transitionDurationMs);
       }
 
       prevButton.addEventListener('click', function () {
