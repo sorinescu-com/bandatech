@@ -1095,9 +1095,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* =============================================
-   Contact Form
+   Contact Form & Page
    ============================================= */
-.form {
+#contact-page, 
+#contact-page .site-header {
+  background-color: var(--color-bg);
+}
+  .form {
   max-width: 560px;
   margin-top: 2rem;
   display: flex;
