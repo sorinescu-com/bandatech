@@ -1297,6 +1297,13 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 1;
   visibility: visible;
   pointer-events: none;
+  
+}
+.catalog-slide.is-exiting {
+  opacity: 0;
+
+  transition: transform 1s cubic-bezier(0.2, 0.72, 0.2, 1), opacity 1s ease;
+
 }
 
 .catalog-slide.is-entering {
