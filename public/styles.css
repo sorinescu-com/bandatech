@@ -1060,15 +1060,57 @@ h1, h2, h3, h4, h5, h6 {
 .catalog-shell {
   width: min(1360px, calc(100% - 8rem));
   margin: 0 auto;
+  position: relative;
+  overflow: hidden;
 }
 
 .catalog-slide {
-  display: none;
-  animation: catalogFadeIn 0.45s ease;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(0);
+  transition: transform 0.62s cubic-bezier(0.2, 0.72, 0.2, 1), opacity 0.32s ease;
 }
 
 .catalog-slide.is-active {
-  display: block;
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.catalog-slide.is-entering,
+.catalog-slide.is-exiting {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: none;
+}
+
+.catalog-slide.is-entering {
+  z-index: 3;
+}
+
+.catalog-slide.is-exiting {
+  z-index: 2;
+}
+
+.catalog-slide.is-enter-from-right {
+  transform: translateX(100%);
+}
+
+.catalog-slide.is-enter-from-left {
+  transform: translateX(-100%);
+}
+
+.catalog-slide.is-exit-to-left {
+  transform: translateX(-100%);
+}
+
+.catalog-slide.is-exit-to-right {
+  transform: translateX(100%);
 }
 
 .catalog-hero {
@@ -1196,17 +1238,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .catalog-nav-arrow--next {
   right: 1.5rem;
-}
-
-@keyframes catalogFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 .footer-logo img {
     max-height: 70px;
