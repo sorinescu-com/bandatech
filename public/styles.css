@@ -1033,7 +1033,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer-inner {
-  max-width: 1440px;
+  max-width: var(--page-width);
   margin: 0 auto;
   padding: 4rem 4rem 2rem;
 }
@@ -1047,9 +1047,8 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 5rem;
 }
 
-.footer-logo svg {
-  width: 180px;
-  height: auto;
+.footer-logo img {
+    max-height: 70px;
 }
 
 .footer-address {
